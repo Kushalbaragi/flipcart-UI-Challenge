@@ -20,9 +20,6 @@ function Sort({ products,Handler }) {
     return b.rating - a.rating;
   }
 
-  // console.log(products);
-//   products = products.sort(sortingbyprice);
-//   console.log(products);
 function selectHandler(e){
     if(e.target.value==='name'){
         Handler(products.sort(sortingbyName));
@@ -39,17 +36,12 @@ function selectHandler(e){
 }
 
   return (
-  <>
-  <label htmlFor='sorting'>SORT BY : </label>
-  <select id='sorting' onChange={selectHandler}>
-   
-    <option> select the sorting</option>
-    <option value='name'>sort by name</option>
-    <option value='price'>sort by price</option>
-    <option value='rating'>sort by rating</option>
-
-  </select>
-  </>
+    <ul className='sort-wrapper'>
+        <li>Sort By :</li>
+        <li>Relevence</li>
+        <li>Price - Low to Hight</li>
+        <li>Price - Hight to Low</li>
+    </ul>
   );
 }
 
