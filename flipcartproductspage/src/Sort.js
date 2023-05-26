@@ -1,6 +1,6 @@
 import React from "react";
 
-function Sort({ products,sortHnadler }) {
+function Sort({ products,Handler }) {
   function sortingbyName(a, b) {
     a = a.title.toUpperCase();
     b = b.title.toUpperCase();
@@ -16,22 +16,26 @@ function Sort({ products,sortHnadler }) {
   function sortingbyprice(a, b) {
     return a.price - b.price;
   }
+  function sortingbyrating(a, b) {
+    return b.rating - a.rating;
+  }
 
   // console.log(products);
 //   products = products.sort(sortingbyprice);
 //   console.log(products);
 function selectHandler(e){
     if(e.target.value==='name'){
-        console.log('name');
-        sortHnadler(products.sort(sortingbyName));
-
+        Handler(products.sort(sortingbyName));
     }
     else if(e.target.value==='price'){
-        console.log('price');
+        Handler(products.sort(sortingbyprice));
+    }
+    else if(e.target.value==='rating'){
 
-        sortHnadler(products.sort(sortingbyprice));
+        Handler(products.sort(sortingbyrating));
 
     }
+
 }
 
   return (
@@ -42,6 +46,8 @@ function selectHandler(e){
     <option> select the sorting</option>
     <option value='name'>sort by name</option>
     <option value='price'>sort by price</option>
+    <option value='rating'>sort by rating</option>
+
   </select>
   </>
   );
